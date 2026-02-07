@@ -1,0 +1,7 @@
+{
+  "name": "list_dir",
+  "description": "列出工作区目录",
+  "type": "command",
+  "command": "ls -la",
+  "usage": "{\"tool\":\"list_dir\"}"
+}

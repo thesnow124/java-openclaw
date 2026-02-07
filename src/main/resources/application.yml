@@ -1,0 +1,29 @@
+# OpenClaw Lite 应用配置
+app:
+  workspace-dir: .
+  session-path: data/session.json
+  skills-dir: skills
+  max-tool-steps: 100
+  # 上下文与压缩控制
+  context-tokens: 8000
+  context-warn-ratio: 0.8
+  compaction-target-tokens: 2000
+  compaction-keep-messages: 6
+  compaction-input-max-chars: 12000
+  # 工具插件
+  tools-dir: tools
+  enable-command-tools: true
+
+# Spring 运行方式与模型配置
+spring:
+  main:
+    web-application-type: none
+  ai:
+    model:
+      chat: zhipuai
+    zhipuai:
+      api-key: ${ZHIPUAI_API_KEY}
+      base-url: ${ZHIPUAI_BASE_URL:https://open.bigmodel.cn/api/coding/paas}
+      chat:
+        options:
+          model: ${ZHIPUAI_MODEL:glm-4.7}

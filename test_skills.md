@@ -1,0 +1,63 @@
+# OpenClaw Lite 技能加载测试结果
+
+## 技能目录统计
+总技能数:       57
+
+## 技能列表
+- **1password** : Set up and use 1Password CLI (op). Use when installing the CLI, enabling desktop app integration, si
+- **apple-notes** : Manage Apple Notes via the `memo` CLI on macOS (create, view, edit, delete, search, move, and export
+- **apple-reminders** : Manage Apple Reminders via the `remindctl` CLI on macOS (list, add, edit, complete, delete). Support
+- **auto-executor** : 自动执行java-scripter生成的脚本
+- **bear-notes** : Create, search, and manage Bear notes via grizzly CLI.
+- **bird** : X/Twitter CLI for reading, searching, posting, and engagement via cookies.
+- **blogwatcher** : Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.
+- **blucli** : BluOS CLI (blu) for discovery, playback, grouping, and volume.
+- **bluebubbles** : Use when you need to send or manage iMessages via BlueBubbles (recommended iMessage integration). Ca
+- **camsnap** : Capture frames or clips from RTSP/ONVIF cameras.
+- **canvas** : 
+- **clawhub** : Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when 
+- **coding-agent** : Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic con
+- **discord** : Use when you need to control Discord from OpenClaw via the discord tool: send messages, react, post 
+- **eightctl** : Control Eight Sleep pods (status, temperature, alarms, schedules).
+- **food-order** : Reorder Foodora orders + track ETA/status with ordercli. Never confirm without explicit user approva
+- **gemini** : Gemini CLI for one-shot Q&A, summaries, and generation.
+- **gifgrep** : Search GIF providers with CLI/TUI, download results, and extract stills/sheets.
+- **github** : Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues,
+- **gog** : Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.
+- **goplaces** : Query Google Places API (New) via the goplaces CLI for text search, place details, resolve, and revi
+- **healthcheck** : Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user a
+- **hello** : 
+- **himalaya** : CLI to manage emails via IMAP/SMTP. Use `himalaya` to list, read, write, reply, forward, search, and
+- **imsg** : iMessage/SMS CLI for listing chats, history, watch, and sending.
+- **java-scripter** : 当AI无法直接完成任务时，编写Java脚本来实现
+- **local-places** : Search for places (restaurants, cafes, etc.) via Google Places API proxy on localhost.
+- **mcporter** : Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), 
+- **model-usage** : Use CodexBar CLI local cost usage to summarize per-model usage for Codex or Claude, including the cu
+- **nano-banana-pro** : Generate or edit images via Gemini 3 Pro Image (Nano Banana Pro).
+- **nano-pdf** : Edit PDFs with natural-language instructions using the nano-pdf CLI.
+- **notion** : Notion API for creating and managing pages, databases, and blocks.
+- **obsidian** : Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli.
+- **openai-image-gen** : Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.
+- **openai-whisper-api** : Transcribe audio via OpenAI Audio Transcriptions API (Whisper).
+- **openai-whisper** : Local speech-to-text with the Whisper CLI (no API key).
+- **openhue** : Control Philips Hue lights/scenes via the OpenHue CLI.
+- **oracle** : Best practices for using the oracle CLI (prompt + file bundling, engines, sessions, and file attachm
+- **ordercli** : Foodora-only CLI for checking past orders and active order status (Deliveroo WIP).
+- **peekaboo** : Capture and automate macOS UI with the Peekaboo CLI.
+- **sag** : ElevenLabs text-to-speech with mac-style say UX.
+- **session-logs** : 查看 OpenClaw Lite 会话存档并回答历史问题
+- **sherpa-onnx-tts** : Local text-to-speech via sherpa-onnx (offline, no cloud)
+- **skill-creator** : 在 OpenClaw Lite 中创建或维护 skills
+- **slack** : Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages 
+- **songsee** : Generate spectrograms and feature-panel visualizations from audio with the songsee CLI.
+- **sonoscli** : Control Sonos speakers (discover/status/play/volume/group).
+- **spotify-player** : Terminal Spotify playback/search via spogo (preferred) or spotify_player.
+- **summarize** : 总结用户提供的文本或本地文件内容（OpenClaw Lite 版本）
+- **things-mac** : Manage Things 3 via the `things` CLI on macOS (add/update projects+todos via URL scheme; read/search
+- **tmux** : Remote-control tmux sessions for interactive CLIs by sending keystrokes and scraping pane output.
+- **todo** : 用于整理和管理待办清单
+- **trello** : Manage Trello boards, lists, and cards via the Trello REST API.
+- **video-frames** : Extract frames or short clips from videos using ffmpeg.
+- **voice-call** : Start voice calls via the OpenClaw voice-call plugin.
+- **wacli** : Send WhatsApp messages to other people or search/sync WhatsApp history via the wacli CLI (not for no
+- **weather** : Get current weather and forecasts (no API key required).

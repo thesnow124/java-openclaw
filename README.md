@@ -1,142 +1,208 @@
-# OpenClaw Lite（Java + Spring AI）
+# OpenClaw Lite
 
-这是一个用 Java 复现 OpenClaw 核心逻辑的“控制台版”示例，方便你用熟悉的 Java/Spring 代码理解核心架构与执行流程。
+企业级 AI Agent 系统 - Java 实现
 
-## 核心能力（当前已实现）
+OpenClaw Lite 是一个功能强大的 AI Agent 系统，支持多渠道消息集成、插件系统、向量搜索内存管理等功能。
 
-- 控制台对话循环（无 CLI 子命令）
-- JSON 会话存档（`data/session.json`）
-- Skills 加载 + frontmatter 解析（`name/description/user-invocable/disable-model-invocation`）
-- 工具循环（模型 JSON → 执行 → 再返回）
-- 工具注册表（内置 + 插件）
-- 上下文窗口保护 + 自动压缩（超限自动摘要）
-- Spring AI Alibaba + Spring AI（ZhiPuAI/GLM-4.7）
+## 特性
 
-## 运行要求
+### 核心功能
+- ✅ **多渠道支持**: Telegram, WhatsApp, Lark (飞书) 等
+- ✅ **Agent Identity 系统**: 自定义 Agent 个性化和配置
+- ✅ **工具结果截断**: 智能上下文管理，防止溢出
+- ✅ **插件系统**: 动态加载和管理插件
+- ✅ **向量搜索内存**: 语义搜索和历史记录
+- ✅ **问题自动修复**: 智能诊断和自动恢复
+- ✅ **工具系统**: 可扩展的工具框架
+- ✅ **媒体处理**: 图片、音频、视频处理管道
+- ✅ **Web UI**: 管理控制台
+- ✅ **CLI 命令行**: 命令行管理工具
 
-- Java 21+（与 Spring Boot 3.5.x / Spring AI 1.1.x 对齐）
-- Maven 3.8+
+### 技术栈
+- **框架**: Spring Boot 3.5.10
+- **Web**: Spring WebFlux (响应式)
+- **AI**: Spring AI 1.1.2
+- **数据库**: SQLite (生产可用，可切换 PostgreSQL)
+- **前端**: Vue 3 + Element Plus
+- **构建**: Maven + Vite
 
 ## 快速开始
 
-1) 配置 GLM-4.7（ZhiPuAI）环境变量：
+### 环境要求
+- Java 21+
+- Maven 3.9+
+- Node.js 18+ (可选，用于 UI 开发)
 
-```
-export ZHIPUAI_API_KEY="你的 API Key"
-export ZHIPUAI_BASE_URL="https://open.bigmodel.cn/api/paas"
-export ZHIPUAI_MODEL="glm-4.7"
-```
+### 构建
 
-说明：Spring AI ZhiPuAI 默认使用 `https://open.bigmodel.cn/api/paas`，无需追加 `/v4` 前缀。
+\`\`\`bash
+# 克隆仓库
+git clone <repository-url>
+cd java-openclaw-lite
 
-2) 启动：
+# 构建项目
+mvn clean package
 
-```
-mvn -f java-openclaw-lite/pom.xml spring-boot:run
-```
+# 运行
+java -jar target/openclaw-lite-1.0.0.jar start
+\`\`\`
 
-3) 控制台输入 `/exit` 退出。
+### Docker 部署
 
-## Skills 用法
+\`\`\`bash
+# 使用 docker-compose
+docker-compose up -d
 
-Skills 目录：`java-openclaw-lite/skills/*/SKILL.md`
+# 单独构建镜像
+docker build -t openclaw-lite:latest .
+\`\`\`
 
-示例（frontmatter）：
+### 访问
+- **API**: http://localhost:8080
+- **WebSocket**: ws://localhost:8080/ws
+- **Web UI**: http://localhost:8080 (构建后)
+- **管理 API**: http://localhost:8080/api/admin
 
-```md
+## 配置
+
+### 应用配置
+
+主要配置文件: `src/main/resources/application.yml`
+
+### 渠道配置
+
+1. **Telegram**:
+   - 创建 Bot: https://t.me/BotFather
+   - 获取 Bot Token
+   - 配置 Webhook (可选)
+
+2. **WhatsApp**:
+   - 创建应用: https://developers.facebook.com
+   - 获取 Phone Number ID 和 Access Token
+   - 配置 Webhook
+
+3. **Lark (飞书)**:
+   - 创建应用: https://open.feishu.cn/app
+   - 获取 App ID 和 App Secret
+   - 配置事件订阅
+
+### Agent 配置
+
+通过 API 或 Web UI 创建和配置 Agent。
+
+## CLI 使用
+
+\`\`\`bash
+# 启动服务
+java -jar openclaw-lite.jar start
+
+# 查看帮助
+java -jar openclaw-lite.jar help
+
+# 管理渠道
+java -jar openclaw-lite.jar channel list
+java -jar openclaw-lite.jar channel start telegram
+\`\`\`
+
+## API 文档
+
+### REST API
+
+#### 管理端点
+
+| 端点 | 方法 | 描述 |
+|------|------|------|
+| `/api/admin/status` | GET | 系统状态 |
+| `/api/admin/channels/stats` | GET | 渠道统计 |
+| `/api/admin/sessions/stats` | GET | 会话统计 |
+
+#### Gateway 协议
+
+**连接**: `POST /api/gateway/connect`
+
+**请求**: `POST /api/gateway/request`
+
+更多 API 文档请参考 `docs/api.md`
+
+## 开发
+
+### 项目结构
+
+\`\`\`
+com.openclawlite
+├── api/              # REST API
+│   ├── rest/         # REST Controllers
+│   ├── websocket/    # WebSocket Handlers
+│   └── protocol/     # Gateway Protocol
+├── gateway/          # Gateway Layer
+│   ├── channel/      # Channel Management
+│   ├── session/      # Session Management
+│   └── plugin/       # Plugin System
+├── service/          # Service Layer
+│   ├── agent/        # Agent Services
+│   ├── memory/       # Memory & Embeddings
+│   ├── tool/         # Tool System
+│   └── media/        # Media Processing
+├── repository/       # Data Access Layer
+└── config/          # Configuration
+\`\`\`
+
+### 添加新渠道
+
+1. 实现 `ChannelPlugin` 接口
+2. 注册到 `ChannelRegistry`
+3. 添加配置适配器
+4. 添加管理接口
+
+### 添加新工具
+
+1. 实现 `Tool` 接口
+2. 添加 `@Component` 注解
+3. 自动注册到 `ToolRegistry`
+
+## 测试
+
+\`\`\`bash
+# 运行所有测试
+mvn test
+
+# 运行单元测试
+mvn test -Dtest=unit
+
+# 运行集成测试
+mvn test -Dtest=integration
+\`\`\`
+
+## 性能优化
+
+### 数据库优化
+- HikariCP 连接池
+- 批量操作
+- 索引优化
+
+### 缓存策略
+- Redis 支持（可选）
+- 本地缓存
+- Embedding 缓存
+
+### 异步处理
+- 响应式 WebFlux
+- 异步消息处理
+- 并发控制
+
+## 贡献
+
+欢迎贡献！请查看 `CONTRIBUTING.md` 了解详情。
+
+## 许可证
+
+[Apache License 2.0](LICENSE)
+
+## 支持
+
+- 问题反馈: [GitHub Issues](https://github.com/openclawlite/java-openclaw-lite/issues)
+- 文档: [Wiki](https://github.com/openclawlite/java-openclaw-lite/wiki)
+
 ---
-name: summarize
-description: 总结文本
-user-invocable: true
-disable-model-invocation: false
----
-```
 
-- `disable-model-invocation: true` → 该 skill 不会进入系统提示词（模型不会自动用它）
-- `user-invocable` 目前只记录，不做权限拦截（后续可扩展）
-
-## 工具系统
-
-### 内置工具
-
-- `read_file`
-- `write_file`
-
-模型必须返回 JSON 形式调用工具，例如：
-
-```json
-{"tool":"read_file","path":"data/notes.txt"}
-```
-
-### 插件工具（tools 目录）
-
-默认目录：`java-openclaw-lite/tools/`（可在配置中改）
-
-示例：`tools/list_dir.json`
-
-```json
-{
-  "name": "list_dir",
-  "description": "列出工作区目录",
-  "type": "command",
-  "command": "ls -la",
-  "usage": "{\"tool\":\"list_dir\"}"
-}
-```
-
-启用命令工具（默认关闭）：
-
-```yml
-app:
-  enable-command-tools: true
-```
-
-⚠️ 注意：命令工具有安全风险，仅用于本地受信环境。
-
-## 上下文保护 + 自动压缩
-
-当对话过长：
-- 接近上限 → 提示“可能触发自动压缩”
-- 超过上限 → 自动生成摘要并保留最近若干条消息
-
-相关配置（`application.yml`）：
-
-```yml
-app:
-  context-tokens: 8000
-  context-warn-ratio: 0.8
-  compaction-target-tokens: 2000
-  compaction-keep-messages: 6
-  compaction-input-max-chars: 12000
-```
-
-## 配置说明
-
-`java-openclaw-lite/src/main/resources/application.yml`
-
-```yml
-app:
-  workspace-dir: .
-  session-path: data/session.json
-  skills-dir: skills
-  tools-dir: tools
-  enable-command-tools: false
-  max-tool-steps: 100
-  context-tokens: 8000
-  context-warn-ratio: 0.8
-  compaction-target-tokens: 2000
-  compaction-keep-messages: 6
-  compaction-input-max-chars: 12000
-```
-
-## 常见问题
-
-- **为什么提示“无法列出目录”**  
-  说明命令型插件工具未启用或未配置。请创建 `tools/*.json` 并设置 `enable-command-tools: true`。
-
-- **为什么技能不生效**  
-  请确认 `skills-dir` 配置正确，且 `SKILL.md` 使用了合法 frontmatter。
-
----
-
-如需继续迁移 OpenClaw 的其他模块（路由、会话缓存、模型 fallback 等），直接告诉我优先级即可。  
+**OpenClaw Lite** - Enterprise AI Agent System for Java

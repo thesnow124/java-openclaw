@@ -13,17 +13,92 @@ app:
   # 工具插件
   tools-dir: tools
   enable-command-tools: true
+  allow-global-access: true      # ⚠️  允许访问工作区外的文件（true = 整个电脑，false = 仅工作区）
+  # WebSocket Gateway 配置
+  gateway:
+    port: ${GATEWAY_PORT:8080}
+    path: /ws
+
+# OpenClaw Agent 配置
+openclaw:
+  agent:
+    # 工具结果截断配置
+    truncation:
+      enabled: true
+      max-context-share: 0.3        # 单个工具结果最多占用上下文窗口的 30%
+      hard-max-chars: 400000         # 硬限制：最多 400,000 字符
+      min-keep-chars: 2000           # 截断时最少保留 2,000 字符
+      truncation-suffix: "\n\n[... Result truncated due to size ...]"
+      default-context-window: 200000 # 默认上下文窗口大小（token）
+
+  # 插件系统配置
+  plugins:
+    current-api-version: "1.0.0"
+    plugin-dirs:
+      - "plugins"
+    plugin-data-dir: "data/plugins"
+    hot-reload-enabled: false       # 开发环境可启用
+    hot-reload-interval: 5000       # 毫秒
+    isolation-enabled: true
+    auto-start: true
+    disabled-plugins: []            # 禁用的插件 ID 列表
+
+  # Embedding 和向量搜索配置
+  embedding:
+    provider: "openai"              # openai 或 local
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      model: "text-embedding-3-small"  # text-embedding-3-small (1536维) 或 text-embedding-3-large (3072维)
+      api-url: "https://api.openai.com"
+      timeout: 30000                # 毫秒
+    # 本地 embedding 提供者使用简化算法，离线可用
+    local:
+      dimension: 384
+      batch-size: 50
+    # 向量搜索配置
+    search:
+      default-top-k: 5              # 默认返回的搜索结果数
+      hybrid-alpha: 0.7             # 混合搜索的向量权重（0-1），keyword权重 = 1-alpha
+      min-similarity: 0.5           # 最小相似度阈值
 
 # Spring 运行方式与模型配置
 spring:
   main:
-    web-application-type: none
+    web-application-type: reactive  # 使用 WebFlux 响应式
   ai:
     model:
       chat: zhipuai
+    retry:
+      # 重试配置
+      max-attempts: 3                # 最多重试 3 次
+      backoff:
+        initial-interval: 2000       # 初始重试间隔 2 秒
+        multiplier: 2.0              # 每次重试间隔翻倍
+        max-interval: 10000          # 最大重试间隔 10 秒
     zhipuai:
       api-key: ${ZHIPUAI_API_KEY}
       base-url: ${ZHIPUAI_BASE_URL:https://open.bigmodel.cn/api/coding/paas}
       chat:
         options:
+
           model: ${ZHIPUAI_MODEL:glm-4.7}
+          temperature: 0.7
+          top-p: 0.9
+          max-tokens: 4096
+        # 超时配置（毫秒）
+        timeout: 300000               # 5 分钟（AI 模型可能需要较长时间）
+      # 私有化部署时可启用此配置
+      # enabled: false
+
+# 服务器配置
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+
+# 日志配置
+logging:
+  level:
+    com.openclawlite: INFO
+    org.springframework.web: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

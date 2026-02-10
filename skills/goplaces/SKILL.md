@@ -1,52 +1,20 @@
 ---
 name: goplaces
-description: Query Google Places API (New) via the goplaces CLI for text search, place details, resolve, and reviews. Use for human-friendly place lookup or JSON output for scripts.
-homepage: https://github.com/steipete/goplaces
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📍",
-        "requires": { "bins": ["goplaces"], "env": ["GOOGLE_PLACES_API_KEY"] },
-        "primaryEnv": "GOOGLE_PLACES_API_KEY",
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/goplaces",
-              "bins": ["goplaces"],
-              "label": "Install goplaces (brew)",
-            },
-          ],
-      },
-  }
+description: Query Google Places API (New) via the goplaces CLI for text search, place details, resolve, and reviews. Use for human-friendly place lookup or JSON output for scripts.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# goplaces
+该技能已从 OpenClaw 上游同步。
 
-Modern Google Places API (New) CLI. Human output by default, `--json` for scripts.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Install
-
-- Homebrew: `brew install steipete/tap/goplaces`
-
-Config
-
-- `GOOGLE_PLACES_API_KEY` required.
-- Optional: `GOOGLE_PLACES_BASE_URL` for testing/proxying.
-
-Common commands
-
-- Search: `goplaces search "coffee" --open-now --min-rating 4 --limit 5`
-- Bias: `goplaces search "pizza" --lat 40.8 --lng -73.9 --radius-m 3000`
-- Pagination: `goplaces search "pizza" --page-token "NEXT_PAGE_TOKEN"`
-- Resolve: `goplaces resolve "Soho, London" --limit 5`
-- Details: `goplaces details <place_id> --reviews`
-- JSON: `goplaces search "sushi" --json`
-
-Notes
-
-- `--no-color` or `NO_COLOR` disables ANSI color.
-- Price levels: 0..4 (free → very expensive).
-- Type filter sends only the first `--type` value (API accepts one).
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

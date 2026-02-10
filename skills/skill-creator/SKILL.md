@@ -1,51 +1,20 @@
 ---
 name: skill-creator
-description: 在 OpenClaw Lite 中创建或维护 skills
+description: Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-用于在 OpenClaw Lite 中创建或维护 skills 的最小规范与流程。
+该技能已从 OpenClaw 上游同步。
 
-## 目录结构
-每个技能一个目录，至少包含一个 `SKILL.md`：
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-```
-skills/<skill-name>/SKILL.md
-```
-
-加载逻辑：系统会把 `SKILL.md` 的正文拼到系统提示词中；第一行非空文本会被当作简短描述。
-
-## 编写要点
-- **简短可执行**：只写模型需要的“流程/约束/注意事项”。
-- **触发条件**：列出用户可能的表述（关键词/问题类型）。
-- **输入输出**：说明需要的输入与建议的输出格式。
-- **工具限制**：当前仅有 `read_file` / `write_file`，不要写需要其他 CLI/系统工具的步骤。
-- **确认节点**：凡是写文件或可能改变状态的操作，先征得用户确认。
-
-## 推荐模板
-```
----
-name: <skill-name>
-description: <一句话描述>
----
-
-<一句话作用说明>
-
-## 触发时机
-- ...
-
-## 使用流程
-1. ...
-
-## 输出建议
-- ...
-
-## 约束与注意
-- ...
-```
-
-## 可选资料
-如果需要补充资料，可以放在：
-- `skills/<skill-name>/references/`
-- `skills/<skill-name>/assets/`
-
-但 OpenClaw Lite **不会自动加载这些文件**，需要通过 `read_file` 手动读取。
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

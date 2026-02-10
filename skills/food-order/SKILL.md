@@ -1,48 +1,20 @@
 ---
 name: food-order
-description: Reorder Foodora orders + track ETA/status with ordercli. Never confirm without explicit user approval. Triggers: order food, reorder, track ETA.
-homepage: https://ordercli.sh
-metadata: {"openclaw":{"emoji":"🥡","requires":{"bins":["ordercli"]},"install":[{"id":"go","kind":"go","module":"github.com/steipete/ordercli/cmd/ordercli@latest","bins":["ordercli"],"label":"Install ordercli (go)"}]}}
+description: Reorder Foodora orders + track ETA/status with ordercli. Never confirm without explicit user approval. Triggers: order food, reorder, track ETA.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Food order (Foodora via ordercli)
+该技能已从 OpenClaw 上游同步。
 
-Goal: reorder a previous Foodora order safely (preview first; confirm only on explicit user “yes/confirm/place the order”).
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Hard safety rules
-
-- Never run `ordercli foodora reorder ... --confirm` unless user explicitly confirms placing the order.
-- Prefer preview-only steps first; show what will happen; ask for confirmation.
-- If user is unsure: stop at preview and ask questions.
-
-Setup (once)
-
-- Country: `ordercli foodora countries` → `ordercli foodora config set --country AT`
-- Login (password): `ordercli foodora login --email you@example.com --password-stdin`
-- Login (no password, preferred): `ordercli foodora session chrome --url https://www.foodora.at/ --profile "Default"`
-
-Find what to reorder
-
-- Recent list: `ordercli foodora history --limit 10`
-- Details: `ordercli foodora history show <orderCode>`
-- If needed (machine-readable): `ordercli foodora history show <orderCode> --json`
-
-Preview reorder (no cart changes)
-
-- `ordercli foodora reorder <orderCode>`
-
-Place reorder (cart change; explicit confirmation required)
-
-- Confirm first, then run: `ordercli foodora reorder <orderCode> --confirm`
-- Multiple addresses? Ask user for the right `--address-id` (take from their Foodora account / prior order data) and run:
-  - `ordercli foodora reorder <orderCode> --confirm --address-id <id>`
-
-Track the order
-
-- ETA/status (active list): `ordercli foodora orders`
-- Live updates: `ordercli foodora orders --watch`
-- Single order detail: `ordercli foodora order <orderCode>`
-
-Debug / safe testing
-
-- Use a throwaway config: `ordercli --config /tmp/ordercli.json ...`
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

@@ -1,74 +1,20 @@
 ---
 name: imsg
-description: iMessage/SMS CLI for listing chats, history, watch, and sending.
-homepage: https://imsg.to
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📨",
-        "os": ["darwin"],
-        "requires": { "bins": ["imsg"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/imsg",
-              "bins": ["imsg"],
-              "label": "Install imsg (brew)",
-            },
-          ],
-      },
-  }
+description: iMessage/SMS CLI for listing chats, history, watch, and sending.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# imsg Actions
+该技能已从 OpenClaw 上游同步。
 
-## Overview
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Use `imsg` to read and send Messages.app iMessage/SMS on macOS.
-
-Requirements: Messages.app signed in, Full Disk Access for your terminal, and Automation permission to control Messages.app for sending.
-
-## Inputs to collect
-
-- Recipient handle (phone/email) for `send`
-- `chatId` for history/watch (from `imsg chats --limit 10 --json`)
-- `text` and optional `file` path for sends
-
-## Actions
-
-### List chats
-
-```bash
-imsg chats --limit 10 --json
-```
-
-### Fetch chat history
-
-```bash
-imsg history --chat-id 1 --limit 20 --attachments --json
-```
-
-### Watch a chat
-
-```bash
-imsg watch --chat-id 1 --attachments
-```
-
-### Send a message
-
-```bash
-imsg send --to "+14155551212" --text "hi" --file /path/pic.jpg
-```
-
-## Notes
-
-- `--service imessage|sms|auto` controls delivery.
-- Confirm recipient + message before sending.
-
-## Ideas to try
-
-- Use `imsg chats --limit 10 --json` to discover chat ids.
-- Watch a high-signal chat to stream incoming messages.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

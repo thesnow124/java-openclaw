@@ -1,0 +1,37 @@
+# Prometheus configuration for OpenClaw Lite monitoring
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # Add your alertmanager here if needed
+
+# Rule files
+rule_files:
+  - "alerting/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  # OpenClaw Lite application metrics
+  - job_name: 'openclaw-lite'
+    static_configs:
+      - targets: ['localhost:8080']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 30s
+
+  # Redis monitoring (if enabled)
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['localhost:6379']
+    scrape_interval: 30s
+
+  # PostgreSQL monitoring (if enabled)
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['localhost:5432']
+    scrape_interval: 30s

@@ -1,103 +1,20 @@
 ---
 name: sherpa-onnx-tts
-description: Local text-to-speech via sherpa-onnx (offline, no cloud)
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🗣️",
-        "os": ["darwin", "linux", "win32"],
-        "requires": { "env": ["SHERPA_ONNX_RUNTIME_DIR", "SHERPA_ONNX_MODEL_DIR"] },
-        "install":
-          [
-            {
-              "id": "download-runtime-macos",
-              "kind": "download",
-              "os": ["darwin"],
-              "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.12.23/sherpa-onnx-v1.12.23-osx-universal2-shared.tar.bz2",
-              "archive": "tar.bz2",
-              "extract": true,
-              "stripComponents": 1,
-              "targetDir": "~/.openclaw/tools/sherpa-onnx-tts/runtime",
-              "label": "Download sherpa-onnx runtime (macOS)",
-            },
-            {
-              "id": "download-runtime-linux-x64",
-              "kind": "download",
-              "os": ["linux"],
-              "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.12.23/sherpa-onnx-v1.12.23-linux-x64-shared.tar.bz2",
-              "archive": "tar.bz2",
-              "extract": true,
-              "stripComponents": 1,
-              "targetDir": "~/.openclaw/tools/sherpa-onnx-tts/runtime",
-              "label": "Download sherpa-onnx runtime (Linux x64)",
-            },
-            {
-              "id": "download-runtime-win-x64",
-              "kind": "download",
-              "os": ["win32"],
-              "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.12.23/sherpa-onnx-v1.12.23-win-x64-shared.tar.bz2",
-              "archive": "tar.bz2",
-              "extract": true,
-              "stripComponents": 1,
-              "targetDir": "~/.openclaw/tools/sherpa-onnx-tts/runtime",
-              "label": "Download sherpa-onnx runtime (Windows x64)",
-            },
-            {
-              "id": "download-model-lessac",
-              "kind": "download",
-              "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-lessac-high.tar.bz2",
-              "archive": "tar.bz2",
-              "extract": true,
-              "targetDir": "~/.openclaw/tools/sherpa-onnx-tts/models",
-              "label": "Download Piper en_US lessac (high)",
-            },
-          ],
-      },
-  }
+description: Local text-to-speech via sherpa-onnx (offline, no cloud)（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# sherpa-onnx-tts
+该技能已从 OpenClaw 上游同步。
 
-Local TTS using the sherpa-onnx offline CLI.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-## Install
-
-1. Download the runtime for your OS (extracts into `~/.openclaw/tools/sherpa-onnx-tts/runtime`)
-2. Download a voice model (extracts into `~/.openclaw/tools/sherpa-onnx-tts/models`)
-
-Update `~/.openclaw/openclaw.json`:
-
-```json5
-{
-  skills: {
-    entries: {
-      "sherpa-onnx-tts": {
-        env: {
-          SHERPA_ONNX_RUNTIME_DIR: "~/.openclaw/tools/sherpa-onnx-tts/runtime",
-          SHERPA_ONNX_MODEL_DIR: "~/.openclaw/tools/sherpa-onnx-tts/models/vits-piper-en_US-lessac-high",
-        },
-      },
-    },
-  },
-}
-```
-
-The wrapper lives in this skill folder. Run it directly, or add the wrapper to PATH:
-
-```bash
-export PATH="{baseDir}/bin:$PATH"
-```
-
-## Usage
-
-```bash
-{baseDir}/bin/sherpa-onnx-tts -o ./tts.wav "Hello from local TTS."
-```
-
-Notes:
-
-- Pick a different model from the sherpa-onnx `tts-models` release if you want another voice.
-- If the model dir has multiple `.onnx` files, set `SHERPA_ONNX_MODEL_FILE` or pass `--model-file`.
-- You can also pass `--tokens-file` or `--data-dir` to override the defaults.
-- Windows: run `node {baseDir}\\bin\\sherpa-onnx-tts -o tts.wav "Hello from local TTS."`
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

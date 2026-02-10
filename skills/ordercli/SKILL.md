@@ -1,78 +1,20 @@
 ---
 name: ordercli
-description: Foodora-only CLI for checking past orders and active order status (Deliveroo WIP).
-homepage: https://ordercli.sh
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🛵",
-        "requires": { "bins": ["ordercli"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/ordercli",
-              "bins": ["ordercli"],
-              "label": "Install ordercli (brew)",
-            },
-            {
-              "id": "go",
-              "kind": "go",
-              "module": "github.com/steipete/ordercli/cmd/ordercli@latest",
-              "bins": ["ordercli"],
-              "label": "Install ordercli (go)",
-            },
-          ],
-      },
-  }
+description: Foodora-only CLI for checking past orders and active order status (Deliveroo WIP).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# ordercli
+该技能已从 OpenClaw 上游同步。
 
-Use `ordercli` to check past orders and track active order status (Foodora only right now).
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Quick start (Foodora)
-
-- `ordercli foodora countries`
-- `ordercli foodora config set --country AT`
-- `ordercli foodora login --email you@example.com --password-stdin`
-- `ordercli foodora orders`
-- `ordercli foodora history --limit 20`
-- `ordercli foodora history show <orderCode>`
-
-Orders
-
-- Active list (arrival/status): `ordercli foodora orders`
-- Watch: `ordercli foodora orders --watch`
-- Active order detail: `ordercli foodora order <orderCode>`
-- History detail JSON: `ordercli foodora history show <orderCode> --json`
-
-Reorder (adds to cart)
-
-- Preview: `ordercli foodora reorder <orderCode>`
-- Confirm: `ordercli foodora reorder <orderCode> --confirm`
-- Address: `ordercli foodora reorder <orderCode> --confirm --address-id <id>`
-
-Cloudflare / bot protection
-
-- Browser login: `ordercli foodora login --email you@example.com --password-stdin --browser`
-- Reuse profile: `--browser-profile "$HOME/Library/Application Support/ordercli/browser-profile"`
-- Import Chrome cookies: `ordercli foodora cookies chrome --profile "Default"`
-
-Session import (no password)
-
-- `ordercli foodora session chrome --url https://www.foodora.at/ --profile "Default"`
-- `ordercli foodora session refresh --client-id android`
-
-Deliveroo (WIP, not working yet)
-
-- Requires `DELIVEROO_BEARER_TOKEN` (optional `DELIVEROO_COOKIE`).
-- `ordercli deliveroo config set --market uk`
-- `ordercli deliveroo history`
-
-Notes
-
-- Use `--config /tmp/ordercli.json` for testing.
-- Confirm before any reorder or cart-changing action.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

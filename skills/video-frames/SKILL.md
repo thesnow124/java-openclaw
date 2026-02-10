@@ -1,46 +1,20 @@
 ---
 name: video-frames
-description: Extract frames or short clips from videos using ffmpeg.
-homepage: https://ffmpeg.org
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🎞️",
-        "requires": { "bins": ["ffmpeg"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "ffmpeg",
-              "bins": ["ffmpeg"],
-              "label": "Install ffmpeg (brew)",
-            },
-          ],
-      },
-  }
+description: Extract frames or short clips from videos using ffmpeg.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Video Frames (ffmpeg)
+该技能已从 OpenClaw 上游同步。
 
-Extract a single frame from a video, or create quick thumbnails for inspection.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-## Quick start
-
-First frame:
-
-```bash
-{baseDir}/scripts/frame.sh /path/to/video.mp4 --out /tmp/frame.jpg
-```
-
-At a timestamp:
-
-```bash
-{baseDir}/scripts/frame.sh /path/to/video.mp4 --time 00:00:10 --out /tmp/frame-10s.jpg
-```
-
-## Notes
-
-- Prefer `--time` for “what is happening around here?”.
-- Use a `.jpg` for quick share; use `.png` for crisp UI frames.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

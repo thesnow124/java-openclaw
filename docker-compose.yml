@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  openclaw-lite:
+    build: .
+    container_name: openclaw-lite
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - OPENCLAW_EMBEDDING_OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ZHIPUAI_API_KEY=${ZHIPUAI_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./plugins:/app/plugins
+      - ./skills:/app/skills
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/api/admin/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Redis cache
+  redis:
+    image: redis:7-alpine
+    container_name: openclaw-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Optional: PostgreSQL (alternative to SQLite)
+  postgres:
+    image: postgres:16-alpine
+    container_name: openclaw-postgres
+    environment:
+      - POSTGRES_DB=openclaw
+      - POSTGRES_USER=openclaw
+      - POSTGRES_PASSWORD=openclaw
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+  postgres-data:

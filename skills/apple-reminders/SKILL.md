@@ -1,96 +1,20 @@
 ---
 name: apple-reminders
-description: Manage Apple Reminders via the `remindctl` CLI on macOS (list, add, edit, complete, delete). Supports lists, date filters, and JSON/plain output.
-homepage: https://github.com/steipete/remindctl
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "⏰",
-        "os": ["darwin"],
-        "requires": { "bins": ["remindctl"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/remindctl",
-              "bins": ["remindctl"],
-              "label": "Install remindctl via Homebrew",
-            },
-          ],
-      },
-  }
+description: Manage Apple Reminders via the `remindctl` CLI on macOS (list, add, edit, complete, delete). Supports lists, date filters, and JSON/plain output.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Apple Reminders CLI (remindctl)
+该技能已从 OpenClaw 上游同步。
 
-Use `remindctl` to manage Apple Reminders directly from the terminal. It supports list filtering, date-based views, and scripting output.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Setup
-
-- Install (Homebrew): `brew install steipete/tap/remindctl`
-- From source: `pnpm install && pnpm build` (binary at `./bin/remindctl`)
-- macOS-only; grant Reminders permission when prompted.
-
-Permissions
-
-- Check status: `remindctl status`
-- Request access: `remindctl authorize`
-
-View Reminders
-
-- Default (today): `remindctl`
-- Today: `remindctl today`
-- Tomorrow: `remindctl tomorrow`
-- Week: `remindctl week`
-- Overdue: `remindctl overdue`
-- Upcoming: `remindctl upcoming`
-- Completed: `remindctl completed`
-- All: `remindctl all`
-- Specific date: `remindctl 2026-01-04`
-
-Manage Lists
-
-- List all lists: `remindctl list`
-- Show list: `remindctl list Work`
-- Create list: `remindctl list Projects --create`
-- Rename list: `remindctl list Work --rename Office`
-- Delete list: `remindctl list Work --delete`
-
-Create Reminders
-
-- Quick add: `remindctl add "Buy milk"`
-- With list + due: `remindctl add --title "Call mom" --list Personal --due tomorrow`
-
-Edit Reminders
-
-- Edit title/due: `remindctl edit 1 --title "New title" --due 2026-01-04`
-
-Complete Reminders
-
-- Complete by id: `remindctl complete 1 2 3`
-
-Delete Reminders
-
-- Delete by id: `remindctl delete 4A83 --force`
-
-Output Formats
-
-- JSON (scripting): `remindctl today --json`
-- Plain TSV: `remindctl today --plain`
-- Counts only: `remindctl today --quiet`
-
-Date Formats
-Accepted by `--due` and date filters:
-
-- `today`, `tomorrow`, `yesterday`
-- `YYYY-MM-DD`
-- `YYYY-MM-DD HH:mm`
-- ISO 8601 (`2026-01-04T12:34:56Z`)
-
-Notes
-
-- macOS-only.
-- If access is denied, enable Terminal/remindctl in System Settings → Privacy & Security → Reminders.
-- If running over SSH, grant access on the Mac that runs the command.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

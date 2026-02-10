@@ -1,38 +1,20 @@
 ---
 name: openai-whisper
-description: 使用 Whisper CLI 进行本地语音转文本（无需 API 密钥）。
-homepage: https://openai.com/research/whisper
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🎙️",
-        "requires": { "bins": ["whisper"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "openai-whisper",
-              "bins": ["whisper"],
-              "label": "Install OpenAI Whisper (brew)",
-            },
-          ],
-      },
-  }
+description: Local speech-to-text with the Whisper CLI (no API key).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Whisper (CLI)
+该技能已从 OpenClaw 上游同步。
 
-使用 `whisper` 在本地转录音频。
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-快速开始
-
-- `whisper /path/audio.mp3 --model medium --output_format txt --output_dir .`
-- `whisper /path/audio.m4a --task translate --output_format srt`
-
-注意事项
-
-- 模型在首次运行时下载到 `~/.cache/whisper`。
-- `--model` 在此安装中默认为 `turbo`。
-- 使用较小的模型以提高速度，使用较大的模型以提高准确性。
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

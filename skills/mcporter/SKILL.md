@@ -1,61 +1,20 @@
 ---
 name: mcporter
-description: Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.
-homepage: http://mcporter.dev
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📦",
-        "requires": { "bins": ["mcporter"] },
-        "install":
-          [
-            {
-              "id": "node",
-              "kind": "node",
-              "package": "mcporter",
-              "bins": ["mcporter"],
-              "label": "Install mcporter (node)",
-            },
-          ],
-      },
-  }
+description: Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# mcporter
+该技能已从 OpenClaw 上游同步。
 
-Use `mcporter` to work with MCP servers directly.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Quick start
-
-- `mcporter list`
-- `mcporter list <server> --schema`
-- `mcporter call <server.tool> key=value`
-
-Call tools
-
-- Selector: `mcporter call linear.list_issues team=ENG limit:5`
-- Function syntax: `mcporter call "linear.create_issue(title: \"Bug\")"`
-- Full URL: `mcporter call https://api.example.com/mcp.fetch url:https://example.com`
-- Stdio: `mcporter call --stdio "bun run ./server.ts" scrape url=https://example.com`
-- JSON payload: `mcporter call <server.tool> --args '{"limit":5}'`
-
-Auth + config
-
-- OAuth: `mcporter auth <server | url> [--reset]`
-- Config: `mcporter config list|get|add|remove|import|login|logout`
-
-Daemon
-
-- `mcporter daemon start|status|stop|restart`
-
-Codegen
-
-- CLI: `mcporter generate-cli --server <name>` or `--command <url>`
-- Inspect: `mcporter inspect-cli <path> [--json]`
-- TS: `mcporter emit-ts <server> --mode client|types`
-
-Notes
-
-- Config default: `./config/mcporter.json` (override with `--config`).
-- Prefer `--output json` for machine-readable results.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

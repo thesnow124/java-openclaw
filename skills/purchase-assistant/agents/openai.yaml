@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purchase Assistant"
+  short_description: "RepoMap-first backend+frontend+readonly SQL purchase assistant."
+  default_prompt: "For procurement or purchase-system questions, first prefilter candidates with scripts/search_repomap.py using RepoMapper snapshots: backend /Users/gaoshuanglong/Desktop/PmsCode/back/repomap_output.txt and frontend /Users/gaoshuanglong/Desktop/PmsCode/front/repomap_output.txt. Then verify using real source under backend /Users/gaoshuanglong/Desktop/PmsCode/back/purchase and frontend /Users/gaoshuanglong/Desktop/PmsCode/front/AddEspPortLang_2026-02-09. Start with scope-specific map search (backend/frontend/all), then fallback to rg if map hits are weak. Output conclusion plus evidence (file path, class/function, call chain). Final evidence must come from real files, not map snippets. For explicit acceptance/reconciliation data checks, run SQL only via scripts/query_mysql_readonly.py with EXPLAIN-first safety."

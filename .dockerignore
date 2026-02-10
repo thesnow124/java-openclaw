@@ -1,0 +1,28 @@
+# Maven
+target/
+!target/*.jar
+!target/lib/**
+!target/classes/**/
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+
+# Build
+*.log
+*.class
+
+# Other
+.DS_Store
+*.swp
+*~
+
+# Keep data
+!data/
+!plugins/
+!skills/

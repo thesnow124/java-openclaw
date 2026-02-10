@@ -1,45 +1,20 @@
 ---
 name: camsnap
-description: Capture frames or clips from RTSP/ONVIF cameras.
-homepage: https://camsnap.ai
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📸",
-        "requires": { "bins": ["camsnap"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/camsnap",
-              "bins": ["camsnap"],
-              "label": "Install camsnap (brew)",
-            },
-          ],
-      },
-  }
+description: Capture frames or clips from RTSP/ONVIF cameras.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# camsnap
+该技能已从 OpenClaw 上游同步。
 
-Use `camsnap` to grab snapshots, clips, or motion events from configured cameras.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Setup
-
-- Config file: `~/.config/camsnap/config.yaml`
-- Add camera: `camsnap add --name kitchen --host 192.168.0.10 --user user --pass pass`
-
-Common commands
-
-- Discover: `camsnap discover --info`
-- Snapshot: `camsnap snap kitchen --out shot.jpg`
-- Clip: `camsnap clip kitchen --dur 5s --out clip.mp4`
-- Motion watch: `camsnap watch kitchen --threshold 0.2 --action '...'`
-- Doctor: `camsnap doctor --probe`
-
-Notes
-
-- Requires `ffmpeg` on PATH.
-- Prefer a short test capture before longer clips.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

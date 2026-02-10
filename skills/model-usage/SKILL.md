@@ -1,69 +1,20 @@
 ---
 name: model-usage
-description: Use CodexBar CLI local cost usage to summarize per-model usage for Codex or Claude, including the current (most recent) model or a full model breakdown. Trigger when asked for model-level usage/cost data from codexbar, or when you need a scriptable per-model summary from codexbar cost JSON.
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📊",
-        "os": ["darwin"],
-        "requires": { "bins": ["codexbar"] },
-        "install":
-          [
-            {
-              "id": "brew-cask",
-              "kind": "brew",
-              "cask": "steipete/tap/codexbar",
-              "bins": ["codexbar"],
-              "label": "Install CodexBar (brew cask)",
-            },
-          ],
-      },
-  }
+description: Use CodexBar CLI local cost usage to summarize per-model usage for Codex or Claude, including the current (most recent) model or a full model breakdown. Trigger when asked for model-level usage/cost data from codexbar, or when you need a scriptable per-model summary from codexbar cost JSON.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Model usage
+该技能已从 OpenClaw 上游同步。
 
-## Overview
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Get per-model usage cost from CodexBar's local cost logs. Supports "current model" (most recent daily entry) or "all models" summaries for Codex or Claude.
-
-TODO: add Linux CLI support guidance once CodexBar CLI install path is documented for Linux.
-
-## Quick start
-
-1. Fetch cost JSON via CodexBar CLI or pass a JSON file.
-2. Use the bundled script to summarize by model.
-
-```bash
-python {baseDir}/scripts/model_usage.py --provider codex --mode current
-python {baseDir}/scripts/model_usage.py --provider codex --mode all
-python {baseDir}/scripts/model_usage.py --provider claude --mode all --format json --pretty
-```
-
-## Current model logic
-
-- Uses the most recent daily row with `modelBreakdowns`.
-- Picks the model with the highest cost in that row.
-- Falls back to the last entry in `modelsUsed` when breakdowns are missing.
-- Override with `--model <name>` when you need a specific model.
-
-## Inputs
-
-- Default: runs `codexbar cost --format json --provider <codex|claude>`.
-- File or stdin:
-
-```bash
-codexbar cost --provider codex --format json > /tmp/cost.json
-python {baseDir}/scripts/model_usage.py --input /tmp/cost.json --mode all
-cat /tmp/cost.json | python {baseDir}/scripts/model_usage.py --input - --mode current
-```
-
-## Output
-
-- Text (default) or JSON (`--format json --pretty`).
-- Values are cost-only per model; tokens are not split by model in CodexBar output.
-
-## References
-
-- Read `references/codexbar-cli.md` for CLI flags and cost JSON fields.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

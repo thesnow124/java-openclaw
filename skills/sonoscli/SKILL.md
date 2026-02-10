@@ -1,46 +1,20 @@
 ---
 name: sonoscli
-description: Control Sonos speakers (discover/status/play/volume/group).
-homepage: https://sonoscli.sh
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🔊",
-        "requires": { "bins": ["sonos"] },
-        "install":
-          [
-            {
-              "id": "go",
-              "kind": "go",
-              "module": "github.com/steipete/sonoscli/cmd/sonos@latest",
-              "bins": ["sonos"],
-              "label": "Install sonoscli (go)",
-            },
-          ],
-      },
-  }
+description: Control Sonos speakers (discover/status/play/volume/group).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Sonos CLI
+该技能已从 OpenClaw 上游同步。
 
-Use `sonos` to control Sonos speakers on the local network.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Quick start
-
-- `sonos discover`
-- `sonos status --name "Kitchen"`
-- `sonos play|pause|stop --name "Kitchen"`
-- `sonos volume set 15 --name "Kitchen"`
-
-Common tasks
-
-- Grouping: `sonos group status|join|unjoin|party|solo`
-- Favorites: `sonos favorites list|open`
-- Queue: `sonos queue list|play|clear`
-- Spotify search (via SMAPI): `sonos smapi search --service "Spotify" --category tracks "query"`
-
-Notes
-
-- If SSDP fails, specify `--ip <speaker-ip>`.
-- Spotify Web API search is optional and requires `SPOTIFY_CLIENT_ID/SECRET`.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

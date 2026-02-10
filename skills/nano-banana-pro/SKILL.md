@@ -1,58 +1,20 @@
 ---
 name: nano-banana-pro
-description: Generate or edit images via Gemini 3 Pro Image (Nano Banana Pro).
-homepage: https://ai.google.dev/
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🍌",
-        "requires": { "bins": ["uv"], "env": ["GEMINI_API_KEY"] },
-        "primaryEnv": "GEMINI_API_KEY",
-        "install":
-          [
-            {
-              "id": "uv-brew",
-              "kind": "brew",
-              "formula": "uv",
-              "bins": ["uv"],
-              "label": "Install uv (brew)",
-            },
-          ],
-      },
-  }
+description: Generate or edit images via Gemini 3 Pro Image (Nano Banana Pro).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Nano Banana Pro (Gemini 3 Pro Image)
+该技能已从 OpenClaw 上游同步。
 
-Use the bundled script to generate or edit images.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Generate
-
-```bash
-uv run {baseDir}/scripts/generate_image.py --prompt "your image description" --filename "output.png" --resolution 1K
-```
-
-Edit (single image)
-
-```bash
-uv run {baseDir}/scripts/generate_image.py --prompt "edit instructions" --filename "output.png" -i "/path/in.png" --resolution 2K
-```
-
-Multi-image composition (up to 14 images)
-
-```bash
-uv run {baseDir}/scripts/generate_image.py --prompt "combine these into one scene" --filename "output.png" -i img1.png -i img2.png -i img3.png
-```
-
-API key
-
-- `GEMINI_API_KEY` env var
-- Or set `skills."nano-banana-pro".apiKey` / `skills."nano-banana-pro".env.GEMINI_API_KEY` in `~/.openclaw/openclaw.json`
-
-Notes
-
-- Resolutions: `1K` (default), `2K`, `4K`.
-- Use timestamps in filenames: `yyyy-mm-dd-hh-mm-ss-name.png`.
-- The script prints a `MEDIA:` line for OpenClaw to auto-attach on supported chat providers.
-- Do not read the image back; report the saved path only.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

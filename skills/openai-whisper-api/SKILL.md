@@ -1,52 +1,20 @@
 ---
 name: openai-whisper-api
-description: Transcribe audio via OpenAI Audio Transcriptions API (Whisper).
-homepage: https://platform.openai.com/docs/guides/speech-to-text
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "☁️",
-        "requires": { "bins": ["curl"], "env": ["OPENAI_API_KEY"] },
-        "primaryEnv": "OPENAI_API_KEY",
-      },
-  }
+description: Transcribe audio via OpenAI Audio Transcriptions API (Whisper).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# OpenAI Whisper API (curl)
+该技能已从 OpenClaw 上游同步。
 
-Transcribe an audio file via OpenAI’s `/v1/audio/transcriptions` endpoint.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-## Quick start
-
-```bash
-{baseDir}/scripts/transcribe.sh /path/to/audio.m4a
-```
-
-Defaults:
-
-- Model: `whisper-1`
-- Output: `<input>.txt`
-
-## Useful flags
-
-```bash
-{baseDir}/scripts/transcribe.sh /path/to/audio.ogg --model whisper-1 --out /tmp/transcript.txt
-{baseDir}/scripts/transcribe.sh /path/to/audio.m4a --language en
-{baseDir}/scripts/transcribe.sh /path/to/audio.m4a --prompt "Speaker names: Peter, Daniel"
-{baseDir}/scripts/transcribe.sh /path/to/audio.m4a --json --out /tmp/transcript.json
-```
-
-## API key
-
-Set `OPENAI_API_KEY`, or configure it in `~/.openclaw/openclaw.json`:
-
-```json5
-{
-  skills: {
-    "openai-whisper-api": {
-      apiKey: "OPENAI_KEY_HERE",
-    },
-  },
-}
-```
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

@@ -1,43 +1,20 @@
 ---
 name: gemini
-description: Gemini CLI 用于一次性问答、总结和生成。
-homepage: https://ai.google.dev/
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "♊️",
-        "requires": { "bins": ["gemini"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "gemini-cli",
-              "bins": ["gemini"],
-              "label": "Install Gemini CLI (brew)",
-            },
-          ],
-      },
-  }
+description: Gemini CLI for one-shot Q&A, summaries, and generation.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# Gemini CLI
+该技能已从 OpenClaw 上游同步。
 
-使用一次性模式下的 Gemini，配合位置提示（避免交互模式）。
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-快速开始
-
-- `gemini "回答这个问题..."`
-- `gemini --model <name> "提示..."`
-- `gemini --output-format json "返回 JSON"`
-
-扩展功能
-
-- 列表：`gemini --list-extensions`
-- 管理：`gemini extensions <command>`
-
-注意事项
-
-- 如果需要身份验证，请以交互方式运行一次 `gemini` 并按照登录流程操作。
-- 为安全起见，避免使用 `--yolo`。
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

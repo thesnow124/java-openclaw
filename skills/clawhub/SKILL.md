@@ -1,77 +1,20 @@
 ---
 name: clawhub
-description: Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "bins": ["clawhub"] },
-        "install":
-          [
-            {
-              "id": "node",
-              "kind": "node",
-              "package": "clawhub",
-              "bins": ["clawhub"],
-              "label": "Install ClawHub CLI (npm)",
-            },
-          ],
-      },
-  }
+description: Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# ClawHub CLI
+该技能已从 OpenClaw 上游同步。
 
-Install
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-```bash
-npm i -g clawhub
-```
-
-Auth (publish)
-
-```bash
-clawhub login
-clawhub whoami
-```
-
-Search
-
-```bash
-clawhub search "postgres backups"
-```
-
-Install
-
-```bash
-clawhub install my-skill
-clawhub install my-skill --version 1.2.3
-```
-
-Update (hash-based match + upgrade)
-
-```bash
-clawhub update my-skill
-clawhub update my-skill --version 1.2.3
-clawhub update --all
-clawhub update my-skill --force
-clawhub update --all --no-input --force
-```
-
-List
-
-```bash
-clawhub list
-```
-
-Publish
-
-```bash
-clawhub publish ./my-skill --slug my-skill --name "My Skill" --version 1.2.0 --changelog "Fixes + docs"
-```
-
-Notes
-
-- Default registry: https://clawhub.com (override with CLAWHUB_REGISTRY or --registry)
-- Default workdir: cwd (falls back to OpenClaw workspace); install dir: ./skills (override with --workdir / --dir / CLAWHUB_WORKDIR)
-- Update command hashes local files, resolves matching version, and upgrades to latest unless --version is set
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

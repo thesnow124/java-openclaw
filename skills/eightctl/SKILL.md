@@ -1,50 +1,20 @@
 ---
 name: eightctl
-description: Control Eight Sleep pods (status, temperature, alarms, schedules).
-homepage: https://eightctl.sh
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🎛️",
-        "requires": { "bins": ["eightctl"] },
-        "install":
-          [
-            {
-              "id": "go",
-              "kind": "go",
-              "module": "github.com/steipete/eightctl/cmd/eightctl@latest",
-              "bins": ["eightctl"],
-              "label": "Install eightctl (go)",
-            },
-          ],
-      },
-  }
+description: Control Eight Sleep pods (status, temperature, alarms, schedules).（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# eightctl
+该技能已从 OpenClaw 上游同步。
 
-Use `eightctl` for Eight Sleep pod control. Requires auth.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Auth
-
-- Config: `~/.config/eightctl/config.yaml`
-- Env: `EIGHTCTL_EMAIL`, `EIGHTCTL_PASSWORD`
-
-Quick start
-
-- `eightctl status`
-- `eightctl on|off`
-- `eightctl temp 20`
-
-Common tasks
-
-- Alarms: `eightctl alarm list|create|dismiss`
-- Schedules: `eightctl schedule list|create|update`
-- Audio: `eightctl audio state|play|pause`
-- Base: `eightctl base info|angle`
-
-Notes
-
-- API is unofficial and rate-limited; avoid repeated logins.
-- Confirm before changing temperature or alarms.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

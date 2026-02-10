@@ -1,69 +1,20 @@
 ---
 name: blogwatcher
-description: Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.
-homepage: https://github.com/Hyaxia/blogwatcher
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "📰",
-        "requires": { "bins": ["blogwatcher"] },
-        "install":
-          [
-            {
-              "id": "go",
-              "kind": "go",
-              "module": "github.com/Hyaxia/blogwatcher/cmd/blogwatcher@latest",
-              "bins": ["blogwatcher"],
-              "label": "Install blogwatcher (go)",
-            },
-          ],
-      },
-  }
+description: Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# blogwatcher
+该技能已从 OpenClaw 上游同步。
 
-Track blog and RSS/Atom feed updates with the `blogwatcher` CLI.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Install
-
-- Go: `go install github.com/Hyaxia/blogwatcher/cmd/blogwatcher@latest`
-
-Quick start
-
-- `blogwatcher --help`
-
-Common commands
-
-- Add a blog: `blogwatcher add "My Blog" https://example.com`
-- List blogs: `blogwatcher blogs`
-- Scan for updates: `blogwatcher scan`
-- List articles: `blogwatcher articles`
-- Mark an article read: `blogwatcher read 1`
-- Mark all articles read: `blogwatcher read-all`
-- Remove a blog: `blogwatcher remove "My Blog"`
-
-Example output
-
-```
-$ blogwatcher blogs
-Tracked blogs (1):
-
-  xkcd
-    URL: https://xkcd.com
-```
-
-```
-$ blogwatcher scan
-Scanning 1 blog(s)...
-
-  xkcd
-    Source: RSS | Found: 4 | New: 4
-
-Found 4 new article(s) total!
-```
-
-Notes
-
-- Use `blogwatcher <command> --help` to discover flags and options.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

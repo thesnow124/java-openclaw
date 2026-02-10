@@ -1,0 +1,112 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": 1,
+  "graphTooltip": false,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12
+      },
+      "id": 1,
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes"
+        }
+      ],
+      "title": "JVM Memory Usage",
+      "type": "graph"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12
+      },
+      "id": 2,
+      "targets": [
+        {
+          "expr": "jvm_threads_live_threads"
+        }
+      ],
+      "title": "Thread Count",
+      "type": "graph"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12
+      },
+      "id": 3,
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count"
+        }
+      ],
+      "title": "HTTP Request Rate",
+      "type": "graph"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12
+      },
+      "id": 4,
+      "targets": [
+        {
+          "expr": "system_cpu_usage"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "gauge"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "version": 0,
+  "list": 1
+}

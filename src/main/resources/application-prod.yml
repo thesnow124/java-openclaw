@@ -1,0 +1,145 @@
+# Production configuration for OpenClaw Lite
+# Optimized for production deployment
+
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain,text/xml
+
+spring:
+  main:
+    web-application-type: reactive
+  
+  # Database
+  datasource:
+    url: jdbc:sqlite:data/openclaw.db
+    hikari:
+      maximum-pool-size: 1
+      minimum-idle: 1
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: none  # Disable auto-DDL in production
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+        jdbc.batch_size: 50
+        
+  # Actuator for health checks and metrics
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health,info,metrics,prometheus
+        base-path: /actuator
+      health:
+        defaults:
+          enabled: true
+        show-details: always
+        status-order: DOWN, DEGRADED, UP
+        livenessstate:
+          enabled: true
+        readinessstate:
+          enabled: true
+      metrics:
+        export:
+          prometheus:
+            enabled: true
+            step: 30
+        tags:
+          application: openclaw-lite
+    prometheus:
+      metrics:
+        export:
+          jvm:
+            enabled: true
+        # Enable Micrometer metrics
+        integration:
+          micrometer:
+            enabled: true
+    tracing:
+      enabled: false
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.openclawlite: INFO
+    org.springframework: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [traceId=%X{traceId}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log
+    max-size: 100MB
+    max-history: 30
+    total-size-cap: 1GB
+
+# OpenClaw Agent configuration
+app:
+  context-tokens: 8000
+  context-warn-ratio: 0.8
+  max-tool-steps: 100
+  tools-dir: tools
+  enable-command-tools: true
+
+# Gateway configuration
+gateway:
+  port: 8080
+  path: /ws
+
+# Agent configuration
+openclaw:
+  agent:
+    truncation:
+      enabled: true
+      max-context-share: 0.3
+      hard-max-chars: 400000
+      min-keep-chars: 2000
+      truncation-suffix: "\n\n[... Result truncated due to size ...]"
+      default-context-window: 200000
+
+  plugins:
+    current-api-version: "1.0.0"
+    plugin-dirs:
+      - "plugins"
+    plugin-data-dir: "data/plugins"
+    hot-reload-enabled: false
+    isolation-enabled: true
+    auto-start: true
+    disabled-plugins: []
+
+  embedding:
+    provider: "openai"
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      model: "text-embedding-3-small"
+      api-url: "https://api.openai.com"
+      timeout: 30000
+    search:
+      default-top-k: 5
+      hybrid-alpha: 0.7
+      min-similarity: 0.5
+
+# Performance configuration
+performance:
+  max-pool-size: 10
+  min-idle: 2
+  connection-timeout: 30000
+  idle-timeout: 600000
+  cache-enabled: true
+  cache-ttl: 300000
+  max-cache-size: 1000
+  core-pool-size: 4
+  max-pool-size-async: 20
+  queue-capacity: 100
+  batch-size: 100
+  fetch-size: 50

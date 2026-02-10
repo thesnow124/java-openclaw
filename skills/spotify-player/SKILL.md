@@ -1,64 +1,20 @@
 ---
 name: spotify-player
-description: 通过 spogo（首选）或 spotify_player 进行终端 Spotify 播放/搜索。
-homepage: https://www.spotify.com
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🎵",
-        "requires": { "anyBins": ["spogo", "spotify_player"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "spogo",
-              "tap": "steipete/tap",
-              "bins": ["spogo"],
-              "label": "Install spogo (brew)",
-            },
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "spotify_player",
-              "bins": ["spotify_player"],
-              "label": "Install spotify_player (brew)",
-            },
-          ],
-      },
-  }
+description: Terminal Spotify playback/search via spogo (preferred) or spotify_player.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# spogo / spotify_player
+该技能已从 OpenClaw 上游同步。
 
-使用 `spogo` **（首选）** 进行 Spotify 播放/搜索。如需要，回退到 `spotify_player`。
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-要求
-
-- Spotify Premium 账户。
-- 已安装 `spogo` 或 `spotify_player` 之一。
-
-spogo 设置
-
-- 导入 cookies：`spogo auth import --browser chrome`
-
-常用 CLI 命令
-
-- 搜索：`spogo search track "query"`
-- 播放控制：`spogo play|pause|next|prev`
-- 设备：`spogo device list`，`spogo device set "<name|id>"`
-- 状态：`spogo status`
-
-spotify_player 命令（备用）
-
-- 搜索：`spotify_player search "query"`
-- 播放控制：`spotify_player playback play|pause|next|previous`
-- 连接设备：`spotify_player connect`
-- 喜欢曲目：`spotify_player like`
-
-注意事项
-
-- 配置文件夹：`~/.config/spotify-player`（例如 `app.toml`）。
-- 对于 Spotify Connect 集成，在配置中设置用户 `client_id`。
-- TUI 快捷键可通过应用中的 `?` 访问。
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

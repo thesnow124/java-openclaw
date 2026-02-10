@@ -1,49 +1,20 @@
 ---
 name: songsee
-description: Generate spectrograms and feature-panel visualizations from audio with the songsee CLI.
-homepage: https://github.com/steipete/songsee
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🌊",
-        "requires": { "bins": ["songsee"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "steipete/tap/songsee",
-              "bins": ["songsee"],
-              "label": "Install songsee (brew)",
-            },
-          ],
-      },
-  }
+description: Generate spectrograms and feature-panel visualizations from audio with the songsee CLI.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# songsee
+该技能已从 OpenClaw 上游同步。
 
-Generate spectrograms + feature panels from audio.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Quick start
-
-- Spectrogram: `songsee track.mp3`
-- Multi-panel: `songsee track.mp3 --viz spectrogram,mel,chroma,hpss,selfsim,loudness,tempogram,mfcc,flux`
-- Time slice: `songsee track.mp3 --start 12.5 --duration 8 -o slice.jpg`
-- Stdin: `cat track.mp3 | songsee - --format png -o out.png`
-
-Common flags
-
-- `--viz` list (repeatable or comma-separated)
-- `--style` palette (classic, magma, inferno, viridis, gray)
-- `--width` / `--height` output size
-- `--window` / `--hop` FFT settings
-- `--min-freq` / `--max-freq` frequency range
-- `--start` / `--duration` time slice
-- `--format` jpg|png
-
-Notes
-
-- WAV/MP3 decode native; other formats use ffmpeg if available.
-- Multiple `--viz` renders a grid.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

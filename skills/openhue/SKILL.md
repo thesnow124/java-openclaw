@@ -1,51 +1,20 @@
 ---
 name: openhue
-description: Control Philips Hue lights/scenes via the OpenHue CLI.
-homepage: https://www.openhue.io/cli
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "💡",
-        "requires": { "bins": ["openhue"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "openhue/cli/openhue-cli",
-              "bins": ["openhue"],
-              "label": "Install OpenHue CLI (brew)",
-            },
-          ],
-      },
-  }
+description: Control Philips Hue lights/scenes via the OpenHue CLI.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# OpenHue CLI
+该技能已从 OpenClaw 上游同步。
 
-Use `openhue` to control Hue lights and scenes via a Hue Bridge.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-Setup
-
-- Discover bridges: `openhue discover`
-- Guided setup: `openhue setup`
-
-Read
-
-- `openhue get light --json`
-- `openhue get room --json`
-- `openhue get scene --json`
-
-Write
-
-- Turn on: `openhue set light <id-or-name> --on`
-- Turn off: `openhue set light <id-or-name> --off`
-- Brightness: `openhue set light <id> --on --brightness 50`
-- Color: `openhue set light <id> --on --rgb #3399FF`
-- Scene: `openhue set scene <scene-id>`
-
-Notes
-
-- You may need to press the Hue Bridge button during setup.
-- Use `--room "Room Name"` when light names are ambiguous.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。

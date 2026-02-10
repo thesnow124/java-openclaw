@@ -1,70 +1,20 @@
 ---
 name: 1password
-description: Set up and use 1Password CLI (op). Use when installing the CLI, enabling desktop app integration, signing in (single or multi-account), or reading/injecting/running secrets via op.
-homepage: https://developer.1password.com/docs/cli/get-started/
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🔐",
-        "requires": { "bins": ["op"] },
-        "install":
-          [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "1password-cli",
-              "bins": ["op"],
-              "label": "Install 1Password CLI (brew)",
-            },
-          ],
-      },
-  }
+description: Set up and use 1Password CLI (op). Use when installing the CLI, enabling desktop app integration, signing in (single or multi-account), or reading/injecting/running secrets via op.（中文入口）
+user-invocable: true
+disable-model-invocation: false
 ---
+# 技能说明（中文入口）
 
-# 1Password CLI
+该技能已从 OpenClaw 上游同步。
 
-Follow the official CLI get-started steps. Don't guess install commands.
+## 使用规则
+1. 先读取同目录 `SKILL.upstream.en.md`。
+2. 严格遵循其中的全部步骤、约束、安全要求与输出格式。
+3. 若本文件与上游文件有冲突，以上游文件为准。
+4. 与用户沟通时默认使用中文；命令、路径、代码、JSON 键名保持原样。
+5. 在执行前先确认依赖与环境条件，再按上游流程完成任务。
 
-## References
-
-- `references/get-started.md` (install + app integration + sign-in flow)
-- `references/cli-examples.md` (real `op` examples)
-
-## Workflow
-
-1. Check OS + shell.
-2. Verify CLI present: `op --version`.
-3. Confirm desktop app integration is enabled (per get-started) and the app is unlocked.
-4. REQUIRED: create a fresh tmux session for all `op` commands (no direct `op` calls outside tmux).
-5. Sign in / authorize inside tmux: `op signin` (expect app prompt).
-6. Verify access inside tmux: `op whoami` (must succeed before any secret read).
-7. If multiple accounts: use `--account` or `OP_ACCOUNT`.
-
-## REQUIRED tmux session (T-Max)
-
-The shell tool uses a fresh TTY per command. To avoid re-prompts and failures, always run `op` inside a dedicated tmux session with a fresh socket/session name.
-
-Example (see `tmux` skill for socket conventions, do not reuse old session names):
-
-```bash
-SOCKET_DIR="${OPENCLAW_TMUX_SOCKET_DIR:-${CLAWDBOT_TMUX_SOCKET_DIR:-${TMPDIR:-/tmp}/openclaw-tmux-sockets}}"
-mkdir -p "$SOCKET_DIR"
-SOCKET="$SOCKET_DIR/openclaw-op.sock"
-SESSION="op-auth-$(date +%Y%m%d-%H%M%S)"
-
-tmux -S "$SOCKET" new -d -s "$SESSION" -n shell
-tmux -S "$SOCKET" send-keys -t "$SESSION":0.0 -- "op signin --account my.1password.com" Enter
-tmux -S "$SOCKET" send-keys -t "$SESSION":0.0 -- "op whoami" Enter
-tmux -S "$SOCKET" send-keys -t "$SESSION":0.0 -- "op vault list" Enter
-tmux -S "$SOCKET" capture-pane -p -J -t "$SESSION":0.0 -S -200
-tmux -S "$SOCKET" kill-session -t "$SESSION"
-```
-
-## Guardrails
-
-- Never paste secrets into logs, chat, or code.
-- Prefer `op run` / `op inject` over writing secrets to disk.
-- If sign-in without app integration is needed, use `op account add`.
-- If a command returns "account is not signed in", re-run `op signin` inside tmux and authorize in the app.
-- Do not run `op` outside tmux; stop and ask if tmux is unavailable.
+## 说明
+- 该中文入口用于触发与路由。
+- 权威技能内容维护在 `SKILL.upstream.en.md`。
